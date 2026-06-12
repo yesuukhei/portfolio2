@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f8f8f8"/>
+  <rect x="80" y="120" width="280" height="48" rx="8" fill="#ffdd00"/>
+  <text x="100" y="152" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#222222" letter-spacing="2">FULL-STACK DEVELOPER</text>
+  <text x="80" y="320" font-family="system-ui, sans-serif" font-size="96" font-weight="700" fill="#222222" letter-spacing="-3">Your Name</text>
+  <text x="80" y="400" font-family="system-ui, sans-serif" font-size="32" fill="#717171">I build bold digital experiences.</text>
+  <rect x="80" y="440" width="64" height="6" rx="3" fill="#ffdd00"/>
+</svg>
