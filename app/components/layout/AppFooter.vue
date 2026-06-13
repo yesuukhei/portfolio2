@@ -15,6 +15,7 @@ const socials = computed(() => [
   <footer class="footer-shell">
     <div class="container">
       <nav
+        v-if="footerNavLinks.length"
         class="footer-nav"
         :aria-label="t('ui.footerNav')"
       >

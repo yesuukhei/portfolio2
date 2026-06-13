@@ -18,11 +18,11 @@ useSeoMeta({
 <template>
   <div>
     <SectionsHeroSection />
-    <SectionsAboutSection />
-    <SectionsWhyMeSection />
     <SectionsProjectsSection />
-    <SectionsExperienceSection />
+    <SectionsAboutSection />
     <SectionsSkillsSection />
+    <SectionsExperienceSection />
+    <SectionsWhyMeSection />
     <SectionsFaqSection />
     <SectionsContactSection />
   </div>

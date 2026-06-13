@@ -6,7 +6,7 @@ const { setRevealRef } = useScrollReveal()
 <template>
   <section
     id="why-me"
-    class="section-padding"
+    class="section-padding bg-[var(--color-surface)]"
   >
     <div class="container">
       <div
@@ -22,7 +22,7 @@ const { setRevealRef } = useScrollReveal()
           {{ whyMeLead }}
         </p>
 
-        <div class="whyme-stack mt-10 md:mt-12">
+        <div class="mt-10 flex flex-col gap-[var(--space-4)] md:mt-12 md:gap-[var(--space-5)]">
           <div
             v-for="(item, i) in whyMe"
             :key="item.title"

@@ -30,7 +30,7 @@ const { setRevealRef } = useScrollReveal()
               <span
                 v-for="item in group.items"
                 :key="item"
-                class="tag font-bold transition-colors hover:bg-[var(--color-primary)] hover:text-[var(--color-text)]"
+                class="tag font-medium transition-colors hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
               >
                 {{ item }}
               </span>

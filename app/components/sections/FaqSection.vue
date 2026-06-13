@@ -27,7 +27,7 @@ function toggle(index: number) {
           {{ faqIntro }}
         </p>
 
-        <div class="faq-list mt-8 max-w-3xl md:mt-10">
+        <div class="mt-8 flex max-w-3xl flex-col gap-[var(--space-3)] md:mt-10">
           <div
             v-for="(item, i) in faq"
             :key="item.question"

@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { useHeroBackground } from '~/composables/useHeroBackground'
+
 const switchLocalePath = useSwitchLocalePath()
 const { locale, locales } = useI18n()
 const { profile, primaryNavLinks, t } = usePortfolio()
+const { hasHeroImage } = useHeroBackground()
 const { activeSection } = useActiveSection()
 const { navigateToSection, goHome, isHome } = useSectionNavigation()
 const mobileOpen = ref(false)
@@ -30,14 +33,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="header-shell">
+  <header
+    class="header-shell"
+    :class="{ 'header-shell--over-hero': hasHeroImage }"
+  >
     <div class="header-bar">
       <button
         type="button"
         class="header-logo"
         @click="onGoHome"
       >
-        {{ profile.name.split(' ')[0] }}<span class="text-[var(--color-accent)]">.</span>
+        {{ profile.name.split(' ')[0] }}<span class="text-[var(--color-primary)]">.</span>
       </button>
 
       <nav class="header-nav" :aria-label="t('nav.about')">

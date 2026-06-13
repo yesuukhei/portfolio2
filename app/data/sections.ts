@@ -1,9 +1,9 @@
 export const homeSectionIds = [
-  'about',
-  'why-me',
   'projects',
-  'experience',
+  'about',
   'skills',
+  'experience',
+  'why-me',
   'faq',
   'contact'
 ] as const

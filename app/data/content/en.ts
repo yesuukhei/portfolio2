@@ -3,6 +3,7 @@ export default {
   name: 'Your Name',
   role: 'Full-Stack Developer',
   tagline: 'I build bold digital experiences that leave a mark.',
+  image: '/sky.jpg',
   email: 'hello@example.com',
   location: 'Ulaanbaatar, Mongolia',
   available: true,
@@ -18,6 +19,11 @@ export default {
     twitter: 'https://x.com/yourusername'
   }
 },
+  about: {
+    focus: ['UX', 'Architecture', 'Speed'],
+    mindset:
+      'Great products balance thoughtful UX, clean code, and shipping fast — I optimize for all three.'
+  },
   projects: [
   {
     slug: 'nebula-dashboard',
@@ -234,29 +240,29 @@ export default {
     items: ['Git', 'Docker', 'Figma', 'Vercel', 'Linux', 'CI/CD']
   }
 ],
-  whyMeLead: 'Beyond the stack — here is how I work, what I bring to a team, and why clients keep coming back.',
+  whyMeLead: 'What you get — fast delivery, clean architecture, and UX that users feel.',
   whyMe: [
-  {
-    title: 'I care about the details',
-    description:
-      'Clean architecture, thoughtful UX, and code that is a pleasure to maintain. I sweat the small stuff so the product feels polished end to end.'
-  },
-  {
-    title: 'I take ownership',
-    description:
-      'From scoping to shipping, I drive work forward without waiting to be told. I break problems down, communicate early, and deliver on commitments.'
-  },
-  {
-    title: 'I bridge design and engineering',
-    description:
-      'I speak both languages — pixel-perfect interfaces and robust backends. That means fewer handoff gaps and faster iteration with your team.'
-  },
-  {
-    title: 'I ship, then improve',
-    description:
-      'I bias toward momentum without cutting corners. Launch the right version first, measure what matters, and refine based on real feedback.'
-  }
-],
+    {
+      title: 'Fast delivery',
+      description:
+        'Speed without cutting corners. Ship the right version early, then refine with real feedback.'
+    },
+    {
+      title: 'Clean architecture',
+      description:
+        'Maintainable, scalable code your team can extend. Clear structure from day one.'
+    },
+    {
+      title: 'UX focused',
+      description:
+        'User flows drive every decision — interfaces and backends built toward the same goal.'
+    },
+    {
+      title: 'Full ownership',
+      description:
+        'From scoping to deploy, I drive work forward with clear communication and reliable delivery.'
+    }
+  ],
   faq: [
   {
     question: 'What kind of projects do you take on?',

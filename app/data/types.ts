@@ -4,10 +4,16 @@ export interface Socials {
   twitter: string
 }
 
+export interface AboutContent {
+  focus: string[]
+  mindset: string
+}
+
 export interface Profile {
   name: string
   role: string
   tagline: string
+  image?: string
   email: string
   location: string
   available: boolean

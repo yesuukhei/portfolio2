@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { profile, t } = usePortfolio()
+const { profile, about, t } = usePortfolio()
 const { setRevealRef } = useScrollReveal()
 </script>
 
@@ -20,7 +20,7 @@ const { setRevealRef } = useScrollReveal()
 
         <div class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-12">
           <div class="flex flex-col items-start">
-            <div class="flex size-36 items-center justify-center rounded-3xl bg-[var(--color-surface)] md:size-48">
+            <div class="flex size-36 items-center justify-center rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface)] md:size-48">
               <SolarUser class="size-16 text-[var(--color-text-muted)] opacity-30 md:size-20" />
             </div>
             <div class="mt-6 space-y-3">
@@ -35,14 +35,40 @@ const { setRevealRef } = useScrollReveal()
             </div>
           </div>
 
-          <div class="space-y-4 md:space-y-5">
-            <p
-              v-for="(paragraph, i) in profile.bio"
-              :key="i"
-              class="type-body"
-            >
-              {{ paragraph }}
-            </p>
+          <div class="space-y-6 md:space-y-8">
+            <div class="space-y-4 md:space-y-5">
+              <p
+                v-for="(paragraph, i) in profile.bio"
+                :key="i"
+                class="type-body"
+              >
+                {{ paragraph }}
+              </p>
+            </div>
+
+            <div>
+              <p class="type-label mb-3">
+                {{ t('sections.about.focusLabel') }}
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  v-for="item in about.focus"
+                  :key="item"
+                  class="tag font-bold"
+                >
+                  {{ item }}
+                </span>
+              </div>
+            </div>
+
+            <div class="rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface)] p-5 md:p-6">
+              <p class="type-label mb-3">
+                {{ t('sections.about.mindsetLabel') }}
+              </p>
+              <p class="type-body-lg">
+                {{ about.mindset }}
+              </p>
+            </div>
           </div>
         </div>
       </div>

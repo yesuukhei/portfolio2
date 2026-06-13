@@ -6,7 +6,7 @@ const { setRevealRef } = useScrollReveal()
 <template>
   <section
     id="projects"
-    class="section-padding bg-[var(--color-surface)]"
+    class="section-padding"
   >
     <div class="container">
       <div
@@ -18,7 +18,7 @@ const { setRevealRef } = useScrollReveal()
           :title="t('sections.projects.title')"
         />
 
-        <div class="zigzag-stack mt-10 md:mt-12">
+        <div class="mt-10 flex flex-col gap-[var(--space-8)] md:mt-12 md:gap-[var(--section-gap)]">
           <div
             v-for="(project, i) in projects"
             :key="project.slug"

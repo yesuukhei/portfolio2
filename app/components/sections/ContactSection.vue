@@ -31,9 +31,9 @@ const socials = computed(() => [
 
           <a
             :href="`mailto:${profile.email}`"
-            class="type-email mt-6 inline-flex items-start gap-3 transition-colors hover:text-[var(--color-accent)] md:mt-8 md:items-center"
+            class="mt-6 inline-flex items-start gap-3 text-[clamp(1.25rem,5vw,2.5rem)] font-semibold leading-[1.1] tracking-[-0.03em] break-all transition-colors hover:text-[var(--color-primary)] md:mt-8 md:items-center md:break-normal md:tracking-[-0.04em]"
           >
-            <SolarLetter class="mt-1 size-6 shrink-0 text-[var(--color-accent)] md:mt-0 md:size-8" />
+            <SolarLetter class="mt-1 size-6 shrink-0 text-[var(--color-primary)] md:mt-0 md:size-8" />
             {{ profile.email }}
           </a>
 
@@ -44,7 +44,7 @@ const socials = computed(() => [
               :href="social.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex size-12 items-center justify-center rounded-3xl bg-[var(--color-surface)] transition-colors hover:text-[var(--color-accent)] md:size-14"
+              class="flex size-12 items-center justify-center rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:text-[var(--color-primary)] md:size-14"
               :aria-label="social.name"
             >
               <UiSocialIcon :name="social.brand" class="size-5" />

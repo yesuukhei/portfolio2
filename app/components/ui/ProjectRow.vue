@@ -14,30 +14,34 @@ const isReversed = computed(() => props.index % 2 === 1)
 
 <template>
   <article
-    class="zigzag-row"
-    :class="{ 'zigzag-row--reverse': isReversed }"
+    class="grid grid-cols-1 items-center gap-[var(--space-6)] md:grid-cols-2 md:gap-[var(--space-8)]"
   >
     <NuxtLink
       :to="localePath(`/projects/${project.slug}`)"
-      class="zigzag-visual group relative"
+      class="group relative block aspect-[16/10] overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface)]"
+      :class="isReversed ? 'md:col-start-2' : 'md:col-start-1'"
     >
       <img
         v-if="project.image && !imageFailed"
         :src="project.image"
         :alt="project.title"
+        class="size-full object-cover"
         loading="lazy"
         @error="imageFailed = true"
       >
       <div
         v-else
-        class="zigzag-visual-placeholder"
+        class="flex size-full items-center justify-center bg-[var(--color-bg)]"
       >
         <SolarGallery class="size-14 text-[var(--color-text-muted)] opacity-30 md:size-16" />
       </div>
-      <div class="absolute inset-0 bg-[var(--color-primary)]/0 transition-colors duration-300 group-hover:bg-[var(--color-primary)]/10" />
+      <div class="absolute inset-0 bg-[var(--color-primary)]/0 transition-colors duration-300 group-hover:bg-[var(--color-primary)]/5" />
     </NuxtLink>
 
-    <div class="zigzag-content">
+    <div
+      class="flex flex-col"
+      :class="isReversed ? 'md:col-start-1 md:row-start-1' : 'md:col-start-2'"
+    >
       <p class="type-label">
         {{ project.caseStudy.year }} / {{ project.caseStudy.role }}
       </p>

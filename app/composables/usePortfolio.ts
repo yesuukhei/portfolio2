@@ -1,4 +1,5 @@
 import type {
+  AboutContent,
   Experience,
   FaqItem,
   NavLink,
@@ -12,6 +13,7 @@ export function usePortfolio() {
   const { t, tm, locale } = useI18n()
 
   const profile = computed(() => tm('portfolio.profile') as Profile)
+  const about = computed(() => tm('portfolio.about') as AboutContent)
   const projects = computed(() => tm('portfolio.projects') as Project[])
   const experience = computed(() => tm('portfolio.experience') as Experience[])
   const skills = computed(() => tm('portfolio.skills') as SkillGroup[])
@@ -21,15 +23,15 @@ export function usePortfolio() {
   const faqIntro = computed(() => t('portfolio.faqIntro'))
 
   const primaryNavLinks = computed<NavLink[]>(() => [
-    { label: t('nav.about'), href: '#about' },
     { label: t('nav.projects'), href: '#projects' },
-    { label: t('nav.experience'), href: '#experience' },
+    { label: t('nav.about'), href: '#about' },
+    { label: t('nav.skills'), href: '#skills' },
     { label: t('nav.contact'), href: '#contact' }
   ])
 
   const footerNavLinks = computed<NavLink[]>(() => [
+    { label: t('nav.experience'), href: '#experience' },
     { label: t('nav.whyMe'), href: '#why-me' },
-    { label: t('nav.skills'), href: '#skills' },
     { label: t('nav.faq'), href: '#faq' }
   ])
 
@@ -53,6 +55,7 @@ export function usePortfolio() {
     locale,
     t,
     profile,
+    about,
     projects,
     experience,
     skills,

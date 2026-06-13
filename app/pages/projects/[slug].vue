@@ -5,6 +5,7 @@ const slug = route.params.slug as string
 const { getProjectBySlug, getAdjacentProjects, profile, t } = usePortfolio()
 
 const project = getProjectBySlug(slug)
+const imageFailed = ref(false)
 
 if (!project) {
   throw createError({ statusCode: 404, statusMessage: t('ui.notFound') })
@@ -27,8 +28,8 @@ useSeoMeta({
 
 <template>
   <article>
-    <div class="bg-[var(--color-surface)]">
-      <div class="container py-6">
+    <div class="border-b border-[var(--color-border)]">
+      <div class="container py-4">
         <NuxtLink
           :to="localePath({ path: '/', hash: '#projects' })"
           class="link-accent inline-flex items-center gap-2"
@@ -39,15 +40,13 @@ useSeoMeta({
       </div>
     </div>
 
-    <header class="section-padding !pb-12">
-      <div class="container">
-        <div class="flex flex-wrap gap-3 type-body-sm font-bold uppercase tracking-wider">
-          <span>{{ project.caseStudy.year }}</span>
-          <span class="text-[var(--color-text-muted)]">/</span>
-          <span class="text-[var(--color-accent)]">{{ project.caseStudy.role }}</span>
-        </div>
+    <header class="section-padding">
+      <div class="container max-w-3xl">
+        <p class="type-label">
+          {{ project.caseStudy.year }} · {{ project.caseStudy.role }}
+        </p>
 
-        <h1 class="type-section mt-6">
+        <h1 class="type-section mt-4">
           {{ project.title }}
         </h1>
 
@@ -89,16 +88,29 @@ useSeoMeta({
       </div>
     </header>
 
-    <div class="container">
-      <div class="aspect-[16/9] overflow-hidden rounded-3xl bg-[var(--color-surface)]">
-        <div class="flex h-full items-center justify-center bg-[var(--color-bg)]">
+    <div class="container pb-[var(--space-7)] md:pb-[var(--space-8)]">
+      <div
+        class="aspect-[16/9] overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface)]"
+      >
+        <img
+          v-if="project.image && !imageFailed"
+          :src="project.image"
+          :alt="project.title"
+          class="size-full object-cover"
+          loading="eager"
+          @error="imageFailed = true"
+        >
+        <div
+          v-else
+          class="flex size-full items-center justify-center bg-[var(--color-surface)]"
+        >
           <SolarGallery class="size-16 text-[var(--color-text-muted)] opacity-30" />
         </div>
       </div>
     </div>
 
-    <div class="section-padding">
-      <div class="container space-y-10 md:space-y-16">
+    <div class="section-padding bg-[var(--color-surface)]">
+      <div class="container max-w-3xl space-y-12 md:space-y-16">
         <section>
           <h2 class="type-label mb-4">
             {{ t('caseStudy.overview') }}
@@ -136,7 +148,7 @@ useSeoMeta({
               :key="feature"
               class="type-body flex gap-3"
             >
-              <SolarCheckCircle class="mt-0.5 size-5 shrink-0 text-[var(--color-accent)]" />
+              <span class="mt-2.5 size-1.5 shrink-0 rounded-full bg-[var(--color-primary)]" />
               {{ feature }}
             </li>
           </ul>
@@ -150,9 +162,8 @@ useSeoMeta({
             <li
               v-for="item in project.caseStudy.outcome"
               :key="item"
-              class="type-body flex gap-3 rounded-3xl bg-[var(--color-surface)] p-5"
+              class="type-body rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-bg)] p-5"
             >
-              <span class="mt-2 size-2 shrink-0 rounded-full bg-[var(--color-primary)]" />
               {{ item }}
             </li>
           </ul>
@@ -160,17 +171,17 @@ useSeoMeta({
       </div>
     </div>
 
-    <nav class="bg-[var(--color-surface)] py-12">
+    <nav class="border-t border-[var(--color-border)] py-12 md:py-16">
       <div class="container grid gap-4 md:grid-cols-2 md:gap-6">
         <NuxtLink
           v-if="prev"
           :to="localePath(`/projects/${prev.slug}`)"
-          class="card group p-5 md:p-6"
+          class="card group block p-5 md:p-6"
         >
           <span class="type-label">
             {{ t('caseStudy.previous') }}
           </span>
-          <p class="type-card-title mt-2 transition-colors group-hover:text-[var(--color-accent)]">
+          <p class="type-card-title mt-2 transition-colors group-hover:text-[var(--color-primary)]">
             {{ prev.title }}
           </p>
         </NuxtLink>
@@ -179,12 +190,12 @@ useSeoMeta({
         <NuxtLink
           v-if="next"
           :to="localePath(`/projects/${next.slug}`)"
-          class="card group p-5 text-left md:col-start-2 md:p-6 md:text-right"
+          class="card group block p-5 md:col-start-2 md:p-6 md:text-right"
         >
           <span class="type-label">
             {{ t('caseStudy.next') }}
           </span>
-          <p class="type-card-title mt-2 transition-colors group-hover:text-[var(--color-accent)]">
+          <p class="type-card-title mt-2 transition-colors group-hover:text-[var(--color-primary)]">
             {{ next.title }}
           </p>
         </NuxtLink>
