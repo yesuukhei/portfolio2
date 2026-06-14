@@ -21,6 +21,7 @@ export default {
     closeMenu: "Цэс хаах",
     yearsExperience: "{n}+ жилийн туршлага",
     notFound: "Төсөл олдсонгүй",
+    presentNow: "одоо",
     footerNav: "Бусад хэсгүүд",
   },
   sections: {

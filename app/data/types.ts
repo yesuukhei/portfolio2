@@ -29,6 +29,7 @@ export interface ProjectCaseStudy {
   outcome: string[]
   role: string
   year: string
+  yearEnd?: 'present' | string
   features: string[]
 }
 

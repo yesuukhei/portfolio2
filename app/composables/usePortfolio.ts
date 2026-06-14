@@ -5,6 +5,7 @@ import type {
   NavLink,
   Profile,
   Project,
+  ProjectCaseStudy,
   SkillGroup,
   WhyMePoint
 } from '~/data/types'
@@ -51,6 +52,15 @@ export function usePortfolio() {
     return path === '/' || path === '/en'
   }
 
+  function formatProjectTimeline(caseStudy: ProjectCaseStudy) {
+    if (!caseStudy.yearEnd) return caseStudy.year
+
+    const end =
+      caseStudy.yearEnd === 'present' ? t('ui.presentNow') : caseStudy.yearEnd
+
+    return `${caseStudy.year} – ${end}`
+  }
+
   return {
     locale,
     t,
@@ -67,6 +77,7 @@ export function usePortfolio() {
     footerNavLinks,
     getProjectBySlug,
     getAdjacentProjects,
-    isHomePath
+    isHomePath,
+    formatProjectTimeline
   }
 }

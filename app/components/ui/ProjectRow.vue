@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { Project } from '~/data/types'
+import type { Project } from "~/data/types";
 
 const props = defineProps<{
-  project: Project
-  index: number
-}>()
+  project: Project;
+  index: number;
+}>();
 
-const { t } = usePortfolio()
-const localePath = useLocalePath()
-const imageFailed = ref(false)
-const isReversed = computed(() => props.index % 2 === 1)
+const { t, formatProjectTimeline } = usePortfolio();
+const localePath = useLocalePath();
+const imageFailed = ref(false);
+const isReversed = computed(() => props.index % 2 === 1);
 </script>
 
 <template>
@@ -18,24 +18,28 @@ const isReversed = computed(() => props.index % 2 === 1)
   >
     <NuxtLink
       :to="localePath(`/projects/${project.slug}`)"
-      class="group relative block aspect-[16/10] overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface)]"
+      class="group relative block rounded-3xl bg-[var(--color-surface)]"
       :class="isReversed ? 'md:col-start-2' : 'md:col-start-1'"
     >
       <img
         v-if="project.image && !imageFailed"
         :src="project.image"
         :alt="project.title"
-        class="size-full object-cover"
+        class="size-full object-contain"
         loading="lazy"
         @error="imageFailed = true"
-      >
+      />
       <div
         v-else
         class="flex size-full items-center justify-center bg-[var(--color-bg)]"
       >
-        <SolarGallery class="size-14 text-[var(--color-text-muted)] opacity-30 md:size-16" />
+        <SolarGallery
+          class="size-14 text-[var(--color-text-muted)] opacity-30 md:size-16"
+        />
       </div>
-      <div class="absolute inset-0 bg-[var(--color-primary)]/0 transition-colors duration-300 group-hover:bg-[var(--color-primary)]/5" />
+      <div
+        class="absolute inset-0 bg-[var(--color-primary)]/0 transition-colors duration-300 group-hover:bg-[var(--color-primary)]/5"
+      />
     </NuxtLink>
 
     <div
@@ -43,11 +47,13 @@ const isReversed = computed(() => props.index % 2 === 1)
       :class="isReversed ? 'md:col-start-1 md:row-start-1' : 'md:col-start-2'"
     >
       <p class="type-label">
-        {{ project.caseStudy.year }} / {{ project.caseStudy.role }}
+        {{ formatProjectTimeline(project.caseStudy) }} / {{ project.caseStudy.role }}
       </p>
 
       <NuxtLink :to="localePath(`/projects/${project.slug}`)">
-        <h3 class="type-card-title mt-3 transition-colors hover:text-[var(--color-accent)] md:mt-4">
+        <h3
+          class="type-card-title mt-3 transition-colors hover:text-[var(--color-accent)] md:mt-4"
+        >
           {{ project.title }}
         </h3>
       </NuxtLink>
@@ -57,23 +63,12 @@ const isReversed = computed(() => props.index % 2 === 1)
       </p>
 
       <div class="mt-5 flex flex-wrap gap-2">
-        <span
-          v-for="tag in project.tags"
-          :key="tag"
-          class="tag font-bold"
-        >
+        <span v-for="tag in project.tags" :key="tag" class="tag font-bold">
           {{ tag }}
         </span>
       </div>
 
-      <div class="mt-6 flex flex-wrap items-center gap-5">
-        <NuxtLink
-          :to="localePath(`/projects/${project.slug}`)"
-          class="link-accent inline-flex items-center gap-1.5"
-        >
-          <SolarArrowRight class="size-4" />
-          {{ t('ui.caseStudy') }}
-        </NuxtLink>
+      <div class="mt-6 flex flex-wrap items-center gap-5 justify-end">
         <a
           v-if="project.liveUrl !== '#'"
           :href="project.liveUrl"
@@ -81,16 +76,15 @@ const isReversed = computed(() => props.index % 2 === 1)
           rel="noopener noreferrer"
           class="type-body-sm font-bold transition-colors hover:text-[var(--color-accent)]"
         >
-          {{ t('ui.live') }}
+          {{ t("ui.live") }}
         </a>
-        <a
-          :href="project.githubUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="type-body-sm font-bold transition-colors hover:text-[var(--color-accent)]"
+        <NuxtLink
+          :to="localePath(`/projects/${project.slug}`)"
+          class="link-accent inline-flex items-center gap-1.5"
         >
-          {{ t('ui.code') }}
-        </a>
+          {{ t("ui.caseStudy") }}
+          <SolarArrowRight class="size-4" />
+        </NuxtLink>
       </div>
     </div>
   </article>

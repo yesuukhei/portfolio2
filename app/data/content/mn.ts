@@ -26,194 +26,215 @@ export default {
   },
   projects: [
     {
-      slug: "nebula-dashboard",
-      title: "Nebula Dashboard",
-      description:
-        "Real-time analytics dashboard with interactive charts, role-based access, and WebSocket live updates.",
-      tags: ["Vue", "Nuxt", "PostgreSQL", "D3.js"],
-      image: "/projects/nebula.jpg",
-      liveUrl: "#",
-      githubUrl: "https://github.com",
-      caseStudy: {
-        role: "Lead Developer",
-        year: "2024",
-        overview:
-          "Nebula is an internal analytics platform built for a SaaS company tracking 50k+ daily active users. The team needed a single source of truth for product metrics, replacing scattered spreadsheets and manual SQL queries.",
-        challenge:
-          "Legacy reporting was slow (30s+ load times), lacked real-time data, and had no role-based access. Different teams needed different views without seeing sensitive revenue data.",
-        solution:
-          "Built a Nuxt SPA with WebSocket-powered live charts, a PostgreSQL + TimescaleDB backend for time-series data, and a granular RBAC system. D3.js powers custom visualizations that standard chart libraries couldn't handle.",
-        outcome: [
-          "Reduced report load time from 30s to under 2s",
-          "Adopted by 4 teams within the first month",
-          "Cut ad-hoc data requests to the engineering team by 60%",
-        ],
-        features: [
-          "Real-time WebSocket chart updates",
-          "Role-based dashboard views",
-          "Custom D3.js visualizations",
-          "Export to CSV and PDF",
-          "Saved filter presets per user",
-        ],
-      },
-    },
-    {
-      slug: "pulse-api",
-      title: "Pulse API",
-      description:
-        "High-performance REST API with rate limiting, JWT auth, and auto-generated OpenAPI documentation.",
-      tags: ["Node.js", "TypeScript", "Redis", "Docker"],
-      image: "/projects/pulse.jpg",
-      liveUrl: "#",
-      githubUrl: "https://github.com",
-      caseStudy: {
-        role: "Backend Developer",
-        year: "2024",
-        overview:
-          "Pulse API is the backbone for a mobile fitness app serving 100k requests per minute. It handles user profiles, workout tracking, and social features with strict latency requirements.",
-        challenge:
-          "The existing monolithic API couldn't scale past 10k RPM without timeouts. Documentation was outdated, onboarding new developers took weeks, and there was no rate limiting.",
-        solution:
-          "Designed a modular Node.js + TypeScript API with Redis caching, JWT refresh tokens, and sliding-window rate limiting. OpenAPI specs are generated from Zod schemas, keeping docs always in sync.",
-        outcome: [
-          "Handles 100k+ RPM with p99 latency under 80ms",
-          "API documentation auto-updates on every deploy",
-          "Zero downtime deployments via blue-green strategy",
-        ],
-        features: [
-          "JWT auth with refresh token rotation",
-          "Redis-backed rate limiting",
-          "Auto-generated OpenAPI docs",
-          "Docker + Kubernetes deployment",
-          "Structured logging with request tracing",
-        ],
-      },
-    },
-    {
-      slug: "forma-design-system",
-      title: "Forma Design System",
-      description:
-        "Component library with 40+ accessible UI primitives, theming support, and Storybook documentation.",
-      tags: ["Vue", "Tailwind", "Storybook", "Figma"],
-      image: "/projects/forma.jpg",
-      liveUrl: "#",
-      githubUrl: "https://github.com",
-      caseStudy: {
-        role: "Design Systems Lead",
-        year: "2023",
-        overview:
-          "Forma unifies UI across three product teams that had diverged into inconsistent, duplicated components. The goal was one shared library with strong accessibility and theming.",
-        challenge:
-          "Each team had forked their own button, modal, and form components. Bug fixes in one team never reached the others. WCAG compliance was inconsistent.",
-        solution:
-          "Built 40+ Vue components with Tailwind CSS, full keyboard navigation, and ARIA attributes. Storybook documents every variant. Figma Code Connect bridges design and dev.",
-        outcome: [
-          "Reduced UI-related bugs by 45% across all products",
-          "New feature UI build time cut in half",
-          "Achieved WCAG 2.1 AA compliance across all components",
-        ],
-        features: [
-          "40+ accessible Vue components",
-          "Light/dark theme tokens",
-          "Storybook with visual regression tests",
-          "Figma Code Connect integration",
-          "Semantic versioning with changelog",
-        ],
-      },
-    },
-    {
-      slug: "echo-chat",
-      title: "Echo Chat",
-      description:
-        "Real-time messaging app with end-to-end encryption, file sharing, and presence indicators.",
-      tags: ["Nuxt", "Socket.io", "MongoDB", "WebRTC"],
-      image: "/projects/echo.jpg",
-      liveUrl: "#",
-      githubUrl: "https://github.com",
+      slug: "lera",
+      title: "Lera.mn",
+      description: "Байгууллагын дотоод удирдлагын платформ.",
+      tags: [
+        "Nuxt.js",
+        "MongoDb",
+        "Express.js",
+        "TailwindCSS",
+        "Flutter",
+        "Firebase",
+        "WebSocket",
+      ],
+      image: "/projects/lera.png",
+      liveUrl: "https://lera.mn",
       caseStudy: {
         role: "Full-Stack Developer",
-        year: "2023",
+        year: "2024",
+        yearEnd: "present",
         overview:
-          "Echo is a privacy-focused team messaging app for remote startups. It combines Slack-like channels with E2E encryption for sensitive conversations.",
+          "LERA нь байгууллагын дотоод үйл ажиллагааг нэг дор төвлөрүүлж, харилцаа холбоо, мэдлэгийн сан, сургалт хөгжил зэрэг олон модулиос бүрдсэн веб болон мобайл платформ юм. Одоогоор 20+ байгууллагад идэвхтэй ашиглагдаж байна. Миний үүрэг нь шинэ модуль хөгжүүлэх, одоо байгаа боломжуудыг сайжруулах, системийг өргөтгөх ажлыг хариуцах байсан.",
+
         challenge:
-          "Existing tools either lacked encryption or were too complex for small teams. We needed sub-100ms message delivery, file sharing up to 50MB, and offline message sync.",
+          "Платформ тасралтгүй өргөжиж байсан тул шинэ модулиудыг одоо байгаа системтэй уялдуулах, хэрэглэгчийн шаардлагыг зөв тодорхойлох, мөн олон төрлийн хэрэглэгчийн эрхийн бүтэцтэй нийцүүлэх шаардлагатай байсан.",
+
         solution:
-          "Nuxt frontend with Socket.io for real-time messaging, MongoDB for message persistence, and WebRTC for optional voice calls. Signal Protocol handles E2E encryption for DMs.",
+          "Хөгжүүлэлт эхлэхээс өмнө шаардлага тодорхойлох уулзалтуудад идэвхтэй оролцож, бизнесийн процессыг ойлгон техникийн шийдэл болгон хөрвүүлдэг болсон. Мөн өргөтгөх боломжтой архитектур болон дахин ашиглах компонентууд ашиглан веб болон мобайл хөгжүүлэлтийг хурдасгасан.",
+
         outcome: [
-          "Message delivery under 80ms globally",
-          "500+ beta users in first 8 weeks",
-          "Featured in a privacy-focused startup newsletter",
+          "7+ шинэ модулийг веб болон мобайл платформд амжилттай нэвтрүүлсэн.",
+          "Олон байгаа модулиудын ажиллагаа болон хэрэглэгчийн туршлагыг сайжруулсан.",
+          "Хэрэглэгчийн шаардлагыг илүү нарийвчлалтай ойлгож, хөгжүүлэлтийн буцаалтыг бууруулсан.",
         ],
         features: [
-          "End-to-end encrypted direct messages",
-          "Channel-based team chat",
-          "File sharing with preview",
-          "Online/offline presence indicators",
-          "WebRTC voice calls",
+          "Role-based access control (RBAC)",
+          "Ажилтны мэдээлэл ба байгууллагын бүтэц",
+          "Ирц, цаг бүртгэл",
+          "Дотоод чат ба мэдээ зарлал",
+          "Сургалт, шалгалтын модуль",
+          "Арга хэмжээ ба оролцооны удирдлага",
+          "20+ бизнес модультай өргөтгөх боломжтой архитектур",
         ],
       },
     },
     {
-      slug: "terrain-maps",
-      title: "Terrain Maps",
+      slug: "boom",
+      title: "Boom.mn",
       description:
-        "Interactive 3D terrain visualization using WebGL, with elevation data and custom shader effects.",
-      tags: ["Three.js", "WebGL", "Mapbox", "GLSL"],
-      image: "/projects/terrain.jpg",
-      liveUrl: "#",
-      githubUrl: "https://github.com",
+        "Үйлчлүүлэгчдэд гадаадаас шууд захилах боломжтой онлайн худалдааны систем",
+      tags: ["Express.js", "TypeScript", "Nuxt.js", "Vuetify", "MongoDb"],
+      image: "/projects/boom.png",
+      liveUrl: "https://boom.mn",
       caseStudy: {
-        role: "Frontend Developer",
-        year: "2022",
+        role: "Backend Developer",
+        year: "2025",
+        yearEnd: "present",
         overview:
-          "Terrain Maps is an interactive visualization for an outdoor gear brand, letting users explore hiking trails in 3D with elevation profiles and weather overlays.",
+          "Boom.mn нь хэрэглэгчдэд Америк, Солонгос зэрэг улсын бүтээгдэхүүнийг нэг дороос захиалах боломж олгодог хил дамнасан цахим худалдааны платформ юм. Миний үүрэг нь backoffice системийг хөгжүүлж, бараа бүтээгдэхүүний удирдлага болон үнийн процессуудыг автоматжуулах байв.",
+
         challenge:
-          "Standard 2D maps didn't convey trail difficulty. The client wanted an immersive 3D experience that worked on mobile browsers without killing performance.",
+          "Backoffice систем нь гар ажиллагаанд тулгуурласан байсан бөгөөд бүтээгдэхүүний үнэ шинэчлэх, хямдрал тохируулах, болон өгөгдөл засварлах процессууд цаг их шаарддаг, алдаа гарах эрсдэл өндөр байсан. Мөн системийн кодын бүтэц нүсэр, өргөтгөхөд хүндрэлтэй байсан.",
+
         solution:
-          "Built with Three.js and custom GLSL shaders for terrain rendering. Mapbox provides base tiles; elevation data from USGS is processed into heightmap textures. LOD system keeps mobile framerates above 30fps.",
+          "Барааны үнэ болон хямдралын логикийг автоматжуулж, тодорхой дүрмийн дагуу систем өөрөө шинэчлэлт хийх боломжтой болгосон. Мөн scraping-д суурилсан үнийн мэдээлэл татах механизм нэвтрүүлж, Excel-ээр хийгддэг гар ажиллагааг халсан.",
+
         outcome: [
-          "Average session time increased 3x vs. the old 2D map",
-          "Runs at 30+ fps on mid-range mobile devices",
-          'Won the client\'s internal "best campaign" award',
+          "Хямдрал болон үнийн шинэчлэл бүрэн автомат болсон",
+          "Backoffice-ийн гар ажиллагаа болон хүний алдааг бууруулсан",
+          "Өгөгдөл шинэчлэх процессын хугацааг мэдэгдэхүйц багасгасан",
         ],
+
         features: [
-          "3D terrain with elevation shading",
-          "Interactive trail highlighting",
-          "Weather overlay layer",
-          "Mobile-optimized LOD rendering",
-          "Custom GLSL shader effects",
+          "Backoffice product management",
+          "Automated pricing system",
+          "Scraping-based price updates",
+          "Discount automation engine",
         ],
       },
     },
     {
-      slug: "vault-cms",
-      title: "Vault CMS",
-      description:
-        "Headless CMS with markdown editor, media management, and webhook integrations for static sites.",
-      tags: ["Nuxt", "Content", "Cloudinary", "Vercel"],
-      image: "/projects/vault.jpg",
-      liveUrl: "#",
-      githubUrl: "https://github.com",
+      slug: "xpert",
+      title: "Xpert.mn",
+      description: "Коммунитид суурилсан сургалтын систем.",
+      tags: ["Nuxt.js", "MongoDb", "Express.js", "TailwindCSS"],
+      image: "/projects/xpert.png",
+      liveUrl: "https://xpert.mn",
       caseStudy: {
-        role: "Solo Developer",
-        year: "2022",
+        role: "Full-Stack Developer",
+        year: "2025",
         overview:
-          "Vault is a lightweight headless CMS built for developers who want markdown-based content management without the overhead of enterprise platforms like Contentful.",
+          "Xpert.mn нь Skool.com-той төстэй community-based сургалтын платформ бөгөөд хэрэглэгчид сургалт, нийтлэл, зарлал, үйл ажиллагаа болон гишүүдийн удирдлагыг нэг дороос хийх боломжтой систем юм. Миний үүрэг нь платформыг эхнээс нь бүрэн хөгжүүлж, үндсэн функцуудыг бие даан хэрэгжүүлэх байсан.",
+
         challenge:
-          "Static site clients needed a simple way to edit blog posts and upload images without touching Git. Existing CMS options were either too expensive or too complex for solo developers.",
+          "Community-based платформын хувьд хэрэглэгчийн урсгал, гишүүдийн эрхийн удирдлага, болон контентын бүтэц хоорондын уялдаа төвөгтэй байсан. Мөн олон төрлийн feature-үүдийг нэг дор цэгцтэй UX дээр нэгтгэх шаардлагатай байсан.",
+
         solution:
-          "Nuxt full-stack app with a TipTap markdown editor, Cloudinary for media, and webhook triggers that rebuild connected Vercel sites on publish. Content stored as JSON in PostgreSQL.",
+          "Role-based access болон content structure-ийг тодорхой архитектур дээр суурилуулж, community post, events, members management зэрэг үндсэн модулиудыг шат дараатай хөгжүүлсэн. UX flow-ийг энгийн, ойлгомжтой болгоход төвлөрсөн.",
+
         outcome: [
-          "Used by 12 freelance developers within 6 months",
-          "Average content publish-to-live time under 90 seconds",
-          "Open-sourced with 200+ GitHub stars",
+          "Core community features-ийг бүрэн хөгжүүлсэн",
+          "Platform-ийн үндсэн architecture-ийг бие даан хэрэгжүүлсэн",
+          "Skool-той төстэй бүтэцтэй working MVP гаргасан",
         ],
+      },
+    },
+    {
+      slug: "umbuild",
+      title: "Umbuild",
+      description:
+        "Барилгын менежментийн үйлчилгээ хэрэгжүүлдэг cms удирдлагын системтэй танилцуулга вебсайт. ",
+      tags: ["Nuxt.js", "MongoDb", "Express.js", "TailwindCSS"],
+      image: "/projects/umbuild.png",
+      liveUrl: "https://umbuild.digitalx.mn/",
+      caseStudy: {
+        role: "Full-Stack Developer",
+        year: "2026",
+        overview:
+          "Umbuild нь барилгын менежментийн үйлчилгээ болон төсөл хэрэгжүүлэлтийг дэмжих CMS удирдлагын системтэй танилцуулга вебсайт юм. Систем нь контент удирдлага, мэдээлэл түгээлт болон дотоод мэдээллийн урсгалыг хялбарчлах зорилготой. Миний үүрэг нь платформыг эхнээс нь хөгжүүлж, CMS болон вебийн үндсэн функцуудыг хэрэгжүүлэх байсан.",
+
+        challenge:
+          "Танилцуулга вебсайтын хувьд өндөр түвшний визуал чанар болон бизнесийн хэрэгцээг зэрэг хангах шаардлагатай байсан. Мөн CMS-ийн контент удирдлагыг энгийн, хурдан ашиглах боломжтой UX дээр шийдэх шаардлага тулгарсан.",
+
+        solution:
+          "Reusable UI components дээр суурилсан frontend архитектур боловсруулж, CMS content flow-ийг энгийн CRUD бүтэцтэйгээр шийдсэн. File upload болон email template системийг интеграцчилж, контент удирдлагыг илүү автоматжуулсан.",
+
         features: [
-          "Rich markdown editor with live preview",
-          "Cloudinary media library",
-          "Webhook-triggered static rebuilds",
-          "Multi-site content management",
-          "Role-based editor permissions",
+          "CMS контент удирдлагын систем",
+          "Email template (урилга илгээх систем)",
+          "File upload & management",
+          "Responsive marketing website",
+        ],
+      },
+    },
+    {
+      slug: "chatly",
+      title: "chatly.boom.mn",
+      description: "Ig, fb хуудсуудны chat, comment автоматжуулах систем.",
+      tags: ["Nuxt.js", "MongoDb", "Express.js", "TailwindCSS"],
+      image: "/projects/chatly.png",
+      liveUrl: "https://chatly.boom.mn/",
+      caseStudy: {
+        role: "Full-Stack Developer",
+        year: "2026",
+        overview:
+          "Chatly нь Facebook болон Instagram page-үүдийн чат болон comment-уудыг автоматжуулах зорилготой AI суурьтай харилцааны систем юм. Миний үүрэг нь платформыг эхнээс нь хөгжүүлж, чат автоматжуулалт болон AI хариу системийг хэрэгжүүлэх байсан.",
+
+        challenge:
+          "Олон page-үүд дээр ирж буй чат болон comment-уудыг гар аргаар хариулах нь цаг их шаарддаг, давтагддаг ажил байсан бөгөөд хариу өгөх хурд болон consistency-ийг хадгалах хүндрэлтэй байсан. Мөн social platform API integration нь хязгаарлалттай, event-based урсгалыг зөв удирдах шаардлагатай байсан.",
+
+        solution:
+          "Meta платформын event-based messaging урсгалыг ашиглан chat болон comment trigger system хөгжүүлж, OpenAI API дээр суурилсан AI response layer нэвтрүүлсэн. Мөн predefined reply system-ийг comment automation-д ашиглаж, хариултын consistency-ийг хадгалсан.",
+
+        outcome: [
+          "Customer support-ийн давтагддаг ажлын ачааллыг мэдэгдэхүйц бууруулсан",
+          "Chat болон comment response automation амжилттай хэрэгжүүлсэн",
+          "Multiple Facebook/Instagram pages дээр ашиглагдаж байгаа production system",
+        ],
+      },
+    },
+    {
+      slug: "examy",
+      title: "Examy.mn",
+      description: "Сорилтонд суурилсан шалгалтын систем.",
+      tags: ["Nuxt.js", "MongoDb", "Express.js", "TailwindCSS"],
+      image: "/projects/examy.png",
+      liveUrl: "https://examy.mn",
+      caseStudy: {
+        role: "Full-Stack Developer",
+        year: "2026",
+        overview:
+          "Examy.mn нь олон төрлийн сорил дээр суурилсан онлайн шалгалтын систем бөгөөд хэрэглэгчид тест өгч, үр дүнгээ бодит цагт харах боломжтой систем юм. Миний үүрэг нь системийг эхнээс нь хөгжүүлж, шалгалтын логик болон үндсэн функцуудыг хэрэгжүүлэх байсан.",
+
+        challenge:
+          "Онлайн шалгалтын үед хэрэглэгчийн tab солих, focus алдах зэрэг үйлдлүүдийг хянах, мөн олон сорил бүхий шалгалтын flow-ийг алдаагүй зохион байгуулах шаардлагатай байсан. Мөн оноолтын логик болон шалгалтын төлөвийн удирдлага нарийн бүтэц шаардсан.",
+
+        solution:
+          "Tab switching detection болон exam state management систем хөгжүүлж, шалгалтын явцыг тасралтгүй хянах боломжтой болгосон. Сорил бүрийн оноолт болон шалгалтын flow-ийг modular бүтэцтэйгээр хэрэгжүүлж, үр дүнг real-time байдлаар тооцоолдог болгосон.",
+
+        outcome: [
+          "Олон төрлийн сорил бүхий шалгалтын систем амжилттай хэрэгжүүлсэн",
+          "Шалгалтын flow болон scoring систем тогтвортой ажилладаг болсон",
+          "User exam experience илүү хяналттай, бүтэцтэй болсон",
+        ],
+      },
+    },
+    {
+      slug: "openbox",
+      title: "openbox.mn",
+      description: "AI суурьтай ашиглагдсан барааны худалдааны сайт. ",
+      tags: ["Nuxt.js", "MongoDb", "Express.js", "TailwindCSS", "OpenAI API"],
+      image: "/projects/openbox.png",
+      liveUrl: "https://master.d27xbd5qcy9gfr.amplifyapp.com/shop",
+      caseStudy: {
+        role: "Full-Stack Developer",
+        year: "2026",
+        yearEnd: "present",
+        overview:
+          "Энэхүү систем нь ашиглагдсан барааны худалдааг AI-д суурилсан чат интерфэйсээр удирдах боломжтой e-commerce систем юм. Хэрэглэгчид чат ашиглан бараа хайх, мэдээлэл авах болон худалдан авах үйл явцыг хялбар гүйцэтгэх зорилготой. Миний үүрэг нь системийн backend болон AI интеграцчилалыг хөгжүүлэх байсан.",
+
+        challenge:
+          "Excel дээр суурилсан бүтээгдэхүүний өгөгдлийг системд автоматаар импортлох, үнэ бодолтын логикийг Монгол валют болон ашиг/зардлын тооцоололд нийцүүлэх, хайлт болон категоризацийг ухаалгаар боловсруулах, мөн AI чат интерфэйсийг e-commerce урсгалтай уялдуулах шаардлагатай байсан. Төсөл нь нийлүүлэгчийн үйл ажиллагааны өөрчлөлтөөс шалтгаалан цаашид үргэлжлээгүй.",
+
+        solution:
+          "Excel import pipeline хөгжүүлж бүтээгдэхүүний өгөгдлийг structured database руу хөрвүүлсэн. Үнэ бодолтын engine-г ашиг/зардал болон валютын хөрвүүлэлттэй уялдуулан боловсруулсан. OpenAI API ашиглан чат-д суурилсан product search болон recommendation системийг e-commerce flow-той нэгтгэсэн.",
+
+        outcome: [
+          "Excel-д суурилсан бүтээгдэхүүний мэдээллийг автомат импортлох систем хөгжүүлсэн",
+          "Үнэ бодолт болон ашиг/зардлын тооцооллын автомат engine хэрэгжүүлсэн",
+          "AI чат-д суурилсан product search MVP амжилттай хөгжүүлсэн",
+          "Төсөл нийлүүлэгчийн үйл ажиллагааны өөрчлөлтөөс шалтгаалан түр зогссон",
         ],
       },
     },

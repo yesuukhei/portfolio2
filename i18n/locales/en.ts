@@ -21,6 +21,7 @@ export default {
     closeMenu: "Close menu",
     yearsExperience: "{n}+ years experience",
     notFound: "Project not found",
+    presentNow: "now",
     footerNav: "More sections",
   },
   sections: {
