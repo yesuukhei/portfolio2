@@ -1,14 +1,8 @@
 <script setup lang="ts">
-const { profile, footerNavLinks, t } = usePortfolio()
+const { profile, footerNavLinks, socialLinks, t } = usePortfolio()
 const { navigateToSection } = useSectionNavigation()
 
 const year = new Date().getFullYear()
-
-const socials = computed(() => [
-  { name: 'GitHub', brand: 'github' as const, url: profile.value.socials.github },
-  { name: 'LinkedIn', brand: 'linkedin' as const, url: profile.value.socials.linkedin },
-  { name: 'X', brand: 'x' as const, url: profile.value.socials.twitter }
-])
 </script>
 
 <template>
@@ -36,11 +30,11 @@ const socials = computed(() => [
         </p>
         <div class="footer-socials">
           <a
-            v-for="social in socials"
+            v-for="social in socialLinks"
             :key="social.name"
             :href="social.url"
-            target="_blank"
-            rel="noopener noreferrer"
+            :target="social.external ? '_blank' : undefined"
+            :rel="social.external ? 'noopener noreferrer' : undefined"
             :aria-label="social.name"
             class="footer-social-link"
           >

@@ -1,7 +1,6 @@
 export interface Socials {
-  github: string
-  linkedin: string
-  twitter: string
+  facebook: string
+  phone: string
 }
 
 export interface AboutContent {
@@ -28,9 +27,10 @@ export interface ProjectCaseStudy {
   solution: string
   outcome: string[]
   role: string
-  year: string
+  year?: string
   yearEnd?: 'present' | string
-  features: string[]
+  duration?: string
+  features?: string[]
 }
 
 export interface Project {
@@ -48,7 +48,19 @@ export interface Experience {
   company: string
   role: string
   period: string
+  logo?: string
+  link?: string
   highlights: string[]
+}
+
+export interface Education {
+  institution: string
+  degree: string
+  field: string
+  year: string
+  link?: string
+  logo?: string
+  highlights?: string[]
 }
 
 export interface SkillGroup {
@@ -61,12 +73,14 @@ export interface WhyMePoint {
   description: string
 }
 
-export interface FaqItem {
-  question: string
-  answer: string
-}
-
 export interface NavLink {
   label: string
   href: string
+}
+
+export interface SocialLink {
+  name: string
+  brand: 'facebook' | 'phone'
+  url: string
+  external: boolean
 }

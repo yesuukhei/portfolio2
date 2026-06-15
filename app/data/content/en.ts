@@ -14,9 +14,8 @@ export default {
     'When I\'m not coding, you\'ll find me exploring new frameworks, contributing to open source, or chasing the perfect cup of coffee.'
   ],
   socials: {
-    github: 'https://github.com/yourusername',
-    linkedin: 'https://linkedin.com/in/yourusername',
-    twitter: 'https://x.com/yourusername'
+    facebook: 'https://www.facebook.com/es.hej.g.158441/',
+    phone: '96339198'
   }
 },
   about: {
@@ -226,6 +225,19 @@ export default {
     ]
   }
 ],
+  education: [
+    {
+      institution: 'University of Technology',
+      link: 'https://example.edu',
+      degree: 'Bachelor',
+      field: 'Software Engineering',
+      year: '2022–2026',
+      highlights: [
+        'Core and advanced software engineering coursework',
+        'Project-based and hands-on development work'
+      ]
+    }
+  ],
   skills: [
   {
     category: 'Frontend',
@@ -262,33 +274,5 @@ export default {
       description:
         'From scoping to deploy, I drive work forward with clear communication and reliable delivery.'
     }
-  ],
-  faq: [
-  {
-    question: 'What kind of projects do you take on?',
-    answer:
-      'I work on full-stack web apps, product dashboards, marketing sites, and MVPs. If it needs a thoughtful interface and solid engineering underneath, it is likely a good fit.'
-  },
-  {
-    question: 'How do you usually work with clients?',
-    answer:
-      'We start with a short discovery call, align on scope and timeline, then move in focused iterations with regular check-ins. You get clear updates, working demos, and room to refine as we go.'
-  },
-  {
-    question: 'Do you work remotely?',
-    answer:
-      'Yes. I collaborate with teams and clients remotely across time zones using async updates and scheduled syncs when needed.'
-  },
-  {
-    question: 'Are you available for freelance or full-time roles?',
-    answer:
-      'Both. I am open to contract work, part-time collaborations, and full-time opportunities depending on the project and team.'
-  },
-  {
-    question: 'What is the best way to get started?',
-    answer:
-      'Send a note with a bit about your project, timeline, and budget range. I will reply with next steps and whether I am a good fit.'
-  }
-],
-  faqIntro: 'Quick answers before we connect. Still curious? Reach out anytime.'
+  ]
 }

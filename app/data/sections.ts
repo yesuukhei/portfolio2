@@ -3,7 +3,7 @@ export const homeSectionIds = [
   'about',
   'skills',
   'experience',
+  'education',
   'why-me',
-  'faq',
   'contact'
 ] as const

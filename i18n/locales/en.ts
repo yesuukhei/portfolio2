@@ -6,8 +6,8 @@ export default {
     whyMe: "Why me",
     projects: "Projects",
     experience: "Experience",
+    education: "Education",
     skills: "Skills",
-    faq: "FAQ",
     contact: "Contact",
   },
   ui: {
@@ -34,8 +34,8 @@ export default {
     whyMe: { label: "Why me", title: "Why choose me" },
     projects: { label: "Projects", title: "Proof of work" },
     experience: { label: "Experience", title: "Where I've worked" },
+    education: { label: "Education", title: "Where I studied" },
     skills: { label: "Stack", title: "Skills & tools" },
-    faq: { label: "FAQ", title: "Common questions" },
     contact: { label: "Contact", title: "Let's work together" },
   },
   contact: {

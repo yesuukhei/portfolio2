@@ -1,12 +1,6 @@
 <script setup lang="ts">
-const { profile, t } = usePortfolio()
+const { profile, socialLinks, t } = usePortfolio()
 const { setRevealRef } = useScrollReveal()
-
-const socials = computed(() => [
-  { name: 'GitHub', brand: 'github' as const, url: profile.value.socials.github },
-  { name: 'LinkedIn', brand: 'linkedin' as const, url: profile.value.socials.linkedin },
-  { name: 'X', brand: 'x' as const, url: profile.value.socials.twitter }
-])
 </script>
 
 <template>
@@ -39,11 +33,11 @@ const socials = computed(() => [
 
           <div class="mt-8 flex flex-wrap gap-3 md:mt-10 md:gap-4">
             <a
-              v-for="social in socials"
+              v-for="social in socialLinks"
               :key="social.name"
               :href="social.url"
-              target="_blank"
-              rel="noopener noreferrer"
+              :target="social.external ? '_blank' : undefined"
+              :rel="social.external ? 'noopener noreferrer' : undefined"
               class="flex size-12 items-center justify-center rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:text-[var(--color-primary)] md:size-14"
               :aria-label="social.name"
             >

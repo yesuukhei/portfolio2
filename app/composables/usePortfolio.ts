@@ -1,11 +1,12 @@
 import type {
   AboutContent,
+  Education,
   Experience,
-  FaqItem,
   NavLink,
   Profile,
   Project,
   ProjectCaseStudy,
+  SocialLink,
   SkillGroup,
   WhyMePoint
 } from '~/data/types'
@@ -17,11 +18,25 @@ export function usePortfolio() {
   const about = computed(() => tm('portfolio.about') as AboutContent)
   const projects = computed(() => tm('portfolio.projects') as Project[])
   const experience = computed(() => tm('portfolio.experience') as Experience[])
+  const education = computed(() => tm('portfolio.education') as Education[])
   const skills = computed(() => tm('portfolio.skills') as SkillGroup[])
   const whyMeLead = computed(() => t('portfolio.whyMeLead'))
   const whyMe = computed(() => tm('portfolio.whyMe') as WhyMePoint[])
-  const faq = computed(() => tm('portfolio.faq') as FaqItem[])
-  const faqIntro = computed(() => t('portfolio.faqIntro'))
+
+  const socialLinks = computed<SocialLink[]>(() => [
+    {
+      name: 'Facebook',
+      brand: 'facebook',
+      url: profile.value.socials.facebook,
+      external: true
+    },
+    {
+      name: 'Phone',
+      brand: 'phone',
+      url: `tel:+976${profile.value.socials.phone}`,
+      external: false
+    }
+  ])
 
   const primaryNavLinks = computed<NavLink[]>(() => [
     { label: t('nav.projects'), href: '#projects' },
@@ -32,8 +47,8 @@ export function usePortfolio() {
 
   const footerNavLinks = computed<NavLink[]>(() => [
     { label: t('nav.experience'), href: '#experience' },
-    { label: t('nav.whyMe'), href: '#why-me' },
-    { label: t('nav.faq'), href: '#faq' }
+    { label: t('nav.education'), href: '#education' },
+    { label: t('nav.whyMe'), href: '#why-me' }
   ])
 
   function getProjectBySlug(slug: string) {
@@ -53,12 +68,25 @@ export function usePortfolio() {
   }
 
   function formatProjectTimeline(caseStudy: ProjectCaseStudy) {
-    if (!caseStudy.yearEnd) return caseStudy.year
+    let yearPart = ''
 
-    const end =
-      caseStudy.yearEnd === 'present' ? t('ui.presentNow') : caseStudy.yearEnd
+    if (caseStudy.year) {
+      if (caseStudy.yearEnd) {
+        const end =
+          caseStudy.yearEnd === 'present'
+            ? t('ui.presentNow')
+            : caseStudy.yearEnd
+        yearPart = `${caseStudy.year} – ${end}`
+      } else {
+        yearPart = caseStudy.year
+      }
+    }
 
-    return `${caseStudy.year} – ${end}`
+    if (yearPart && caseStudy.duration) {
+      return `${yearPart} · ${caseStudy.duration}`
+    }
+
+    return caseStudy.duration || yearPart
   }
 
   return {
@@ -68,11 +96,11 @@ export function usePortfolio() {
     about,
     projects,
     experience,
+    education,
     skills,
     whyMeLead,
     whyMe,
-    faq,
-    faqIntro,
+    socialLinks,
     primaryNavLinks,
     footerNavLinks,
     getProjectBySlug,

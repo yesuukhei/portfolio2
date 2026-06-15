@@ -6,8 +6,8 @@ export default {
     whyMe: "Яагаад би",
     projects: "Төслүүд",
     experience: "Туршлага",
+    education: "Боловсрол",
     skills: "Ур чадвар",
-    faq: "Асуулт хариулт",
     contact: "Холбогдох",
   },
   ui: {
@@ -34,8 +34,8 @@ export default {
     whyMe: { label: "Яагаад би", title: "Яагаад надтай ажиллах вэ" },
     projects: { label: "Төслүүд", title: "Бодит ажлууд" },
     experience: { label: "Туршлага", title: "Ажилласан газрууд" },
+    education: { label: "Боловсрол", title: "Сурч байгаа, төгссөн" },
     skills: { label: "Stack", title: "Ур чадвар, технологи" },
-    faq: { label: "Асуулт хариулт", title: "Түгээмэл асуултууд" },
     contact: { label: "Холбогдох", title: "Хамтран ажиллацгаая" },
   },
   contact: {

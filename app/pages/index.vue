@@ -22,8 +22,8 @@ useSeoMeta({
     <SectionsAboutSection />
     <SectionsSkillsSection />
     <SectionsExperienceSection />
+    <SectionsEducationSection />
     <SectionsWhyMeSection />
-    <SectionsFaqSection />
     <SectionsContactSection />
   </div>
 </template>

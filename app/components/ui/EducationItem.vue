@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Experience } from "~/data/types";
+import type { Education } from "~/data/types";
 
 defineProps<{
-  item: Experience;
+  item: Education;
   isLast?: boolean;
 }>();
 
@@ -20,12 +20,12 @@ const logoFailed = ref(false);
       :href="item.link || undefined"
       :target="item.link ? '_blank' : undefined"
       :rel="item.link ? 'noopener noreferrer' : undefined"
-      class="flex w-14 shrink-0 aspect-[3/4] items-center justify-center overflow-hidden rounded-[var(--radius-card)] p-1 transition-opacity hover:opacity-80 md:w-16"
+      class="flex w-14 shrink-0 aspect-square items-center justify-center overflow-hidden rounded-[var(--radius-card)] p-1.5 transition-opacity hover:opacity-80 md:w-16"
       :class="{ 'pointer-events-none': !item.link }"
     >
       <img
         :src="item.logo"
-        :alt="item.company"
+        :alt="item.institution"
         class="size-full object-contain"
         loading="lazy"
         @error="logoFailed = true"
@@ -34,12 +34,12 @@ const logoFailed = ref(false);
 
     <div
       v-else
-      class="flex w-14 shrink-0 aspect-[3/4] items-center justify-center rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-bg)] md:w-16"
+      class="flex w-14 shrink-0 aspect-square items-center justify-center rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-bg)] md:w-16"
     >
       <span
         class="text-lg font-semibold tracking-tight text-[var(--color-text-muted)]"
       >
-        {{ item.company.charAt(0) }}
+        {{ item.institution.charAt(0) }}
       </span>
     </div>
 
@@ -59,21 +59,21 @@ const logoFailed = ref(false);
               'text-[var(--color-text)] transition-colors hover:text-[var(--color-primary)]'
             "
           >
-            {{ item.company }}
+            {{ item.institution }}
           </component>
           <p class="mt-0.5 text-sm font-medium text-[var(--color-text-body)]">
-            {{ item.role }}
+            {{ item.degree }} · {{ item.field }}
           </p>
         </div>
         <span
           class="type-body-sm shrink-0 font-medium text-[var(--color-text-muted)] sm:pt-0.5"
         >
-          {{ item.period }}
+          {{ item.year }}
         </span>
       </div>
 
       <ul
-        v-if="item.highlights.length"
+        v-if="item.highlights?.length"
         class="mt-4 list-disc space-y-2 pl-5"
       >
         <li
