@@ -13,6 +13,7 @@ export interface Profile {
   role: string
   tagline: string
   image?: string
+  profilePicture?: string
   email: string
   location: string
   available: boolean

@@ -40,7 +40,7 @@ export default {
   },
   contact: {
     intro:
-      "I'm open to new opportunities, collaborations, and interesting projects. Whether you have a question or just want to say hi, feel free to reach out.",
+      "I'm open to new opportunities, collaborations, and interesting projects. Whether you have a question or just want to say hi, feel free to reach out anytime.",
   },
   caseStudy: {
     backToProjects: "Back to projects",
